@@ -42,21 +42,6 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-        // This is the theme of your application.
-        //
-        // TRY THIS: Try running your application with "flutter run". You'll see
-        // the application has a purple toolbar. Then, without quitting the app,
-        // try changing the seedColor in the colorScheme below to Colors.green
-        // and then invoke "hot reload" (save your changes or press the "hot
-        // reload" button in a Flutter-supported IDE, or press "r" if you used
-        // the command line to start the app).
-        //
-        // Notice that the counter didn't reset back to zero; the application
-        // state is not lost during the reload. To reset the state, use hot
-        // restart instead.
-        //
-        // This works for code too, not just values: Most code changes can be
-        // tested with just a hot reload.
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
@@ -90,8 +75,8 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   int _currentIndex = 0;
-  final List<Widget> _screens = [Home(), Game(), HighScore()];
-  final List<String> _judul = ['Home', 'Game', 'High Score'];
+  final List<Widget> _screens = [Home()];
+  final List<String> _title = ['Home'];
 
   void _incrementCounter() {
     setState(() {
@@ -108,7 +93,7 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: Text(widget.title),
+        title: Text(_title[_currentIndex]),
       ),
       body: _screens[_currentIndex],
       floatingActionButton: FloatingActionButton(
@@ -116,35 +101,35 @@ class _MyHomePageState extends State<MyHomePage> {
         tooltip: 'Increment',
         child: const Icon(Icons.add),
       ),
-      bottomNavigationBar: MyBNB(),
+      // bottomNavigationBar: MyBNB(),
       drawer: myDrawer(),
     );
   }
 
-  BottomNavigationBar MyBNB() {
-    return BottomNavigationBar(
-        currentIndex: _currentIndex,
-        onTap: (int index) {
-          setState(() {
-            _currentIndex = index;
-          });
-        },
-        fixedColor: const Color.fromARGB(255, 0, 125, 150),
-        items: [
-          BottomNavigationBarItem(
-            label: "Home",
-            icon: Icon(Icons.home),
-          ),
-          BottomNavigationBarItem(
-            label: "Game",
-            icon: Icon(Icons.gamepad),
-          ),
-          BottomNavigationBarItem(
-            label: "High Score",
-            icon: Icon(Icons.score),
-          ),
-        ]);
-  }
+  // BottomNavigationBar MyBNB() {
+  //   return BottomNavigationBar(
+  //       currentIndex: _currentIndex,
+  //       onTap: (int index) {
+  //         setState(() {
+  //           _currentIndex = index;
+  //         });
+  //       },
+  //       fixedColor: const Color.fromARGB(255, 0, 125, 150),
+  //       items: [
+  //         BottomNavigationBarItem(
+  //           label: "Home",
+  //           icon: Icon(Icons.home),
+  //         ),
+  //         BottomNavigationBarItem(
+  //           label: "Game",
+  //           icon: Icon(Icons.gamepad),
+  //         ),
+  //         BottomNavigationBarItem(
+  //           label: "High Score",
+  //           icon: Icon(Icons.score),
+  //         ),
+  //       ]);
+  // }
 
   Drawer myDrawer() {
     return Drawer(
@@ -152,22 +137,22 @@ class _MyHomePageState extends State<MyHomePage> {
       child: Column(
         children: <Widget>[
           UserAccountsDrawerHeader(
-              accountName: Text("Jennie"),
-              accountEmail: Text(active_user),
+              accountName: Text(active_user),
+              accountEmail: Text(active_user + "@gmail.com"),
               currentAccountPicture: CircleAvatar(
                   backgroundImage: NetworkImage("https://i.pravatar.cc/150"))),
-          ListTile(
-              title: new Text("Home"),
-              leading: new Icon(Icons.home),
-              onTap: () {
-                Navigator.popAndPushNamed(context, 'home');
-              }),
-          ListTile(
-              title: new Text("Game"),
-              leading: new Icon(Icons.gamepad),
-              onTap: () {
-                Navigator.popAndPushNamed(context, 'game');
-              }),
+          // ListTile(
+          //     title: new Text("Home"),
+          //     leading: new Icon(Icons.home),
+          //     onTap: () {
+          //       Navigator.popAndPushNamed(context, 'home');
+          //     }),
+          // ListTile(
+          //     title: new Text("Game"),
+          //     leading: new Icon(Icons.gamepad),
+          //     onTap: () {
+          //       Navigator.popAndPushNamed(context, 'game');
+          //     }),
           ListTile(
               title: new Text("High Score"),
               leading: new Icon(Icons.score),

@@ -56,8 +56,8 @@ class _LoginState extends State<Login> {
                 },
                 decoration: InputDecoration(
                     border: OutlineInputBorder(),
-                    labelText: 'Email',
-                    hintText: 'Enter valid email id as abc@gmail.com'),
+                    labelText: 'Username',
+                    hintText: 'Enter valid username'),
               ),
             ),
             Padding(
@@ -77,7 +77,7 @@ class _LoginState extends State<Login> {
                   height: 50,
                   width: 300,
                   decoration: BoxDecoration(
-                      color: Colors.blue,
+                      color: Colors.white,
                       borderRadius: BorderRadius.circular(20)),
                   child: ElevatedButton(
                     onPressed: () {
@@ -85,7 +85,7 @@ class _LoginState extends State<Login> {
                     },
                     child: Text(
                       'Login',
-                      style: TextStyle(color: Colors.white, fontSize: 25),
+                      style: TextStyle(color: Colors.purple[600], fontSize: 25),
                     ),
                   ),
                 )),
