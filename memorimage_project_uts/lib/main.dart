@@ -1,7 +1,25 @@
 import 'package:flutter/material.dart';
+import 'package:memorimage_project_uts/screen/login.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+
+String active_user = "";
+
+Future<String> checkUser() async {
+  final prefs = await SharedPreferences.getInstance();
+  String user_id = prefs.getString("user_id") ?? '';
+  return user_id;
+}
 
 void main() {
   runApp(const MyApp());
+    checkUser().then((String result) {
+    if (result == '')
+      runApp(MyLogin());
+    else {
+      active_user = result;
+      runApp(MyApp());
+    }
+  });
 }
 
 class MyApp extends StatelessWidget {
