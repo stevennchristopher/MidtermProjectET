@@ -1,8 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:memorimage_project_uts/screen/login.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:memorimage_project_uts/screen/home.dart';
+import 'package:memorimage_project_uts/screen/game.dart';
+import 'package:memorimage_project_uts/screen/high_score.dart';
 
 String active_user = "";
+
+void doLogout() async {
+  //later, we use web service here to check the user id and password
+  final prefs = await SharedPreferences.getInstance();
+  active_user = "";
+  prefs.remove("user_id");
+  main();
+}
 
 Future<String> checkUser() async {
   final prefs = await SharedPreferences.getInstance();
@@ -12,7 +23,7 @@ Future<String> checkUser() async {
 
 void main() {
   runApp(const MyApp());
-    checkUser().then((String result) {
+  checkUser().then((String result) {
     if (result == '')
       runApp(MyLogin());
     else {
@@ -51,7 +62,9 @@ class MyApp extends StatelessWidget {
       ),
       home: const MyHomePage(title: 'Flutter Demo Home Page'),
       routes: {
-        
+        'home': (context) => Home(),
+        'game': (context) => Game(),
+        'high_score': (context) => HighScore(),
       },
     );
   }
@@ -76,7 +89,9 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
+  int _currentIndex = 0;
+  final List<Widget> _screens = [Home(), Game(), HighScore()];
+  final List<String> _judul = ['Home', 'Game', 'High Score'];
 
   void _incrementCounter() {
     setState(() {
@@ -85,62 +100,90 @@ class _MyHomePageState extends State<MyHomePage> {
       // so that the display can reflect the updated values. If we changed
       // _counter without calling setState(), then the build method would not be
       // called again, and so nothing would appear to happen.
-      _counter++;
     });
   }
 
   @override
   Widget build(BuildContext context) {
-    // This method is rerun every time setState is called, for instance as done
-    // by the _incrementCounter method above.
-    //
-    // The Flutter framework has been optimized to make rerunning build methods
-    // fast, so that you can just rebuild anything that needs updating rather
-    // than having to individually change instances of widgets.
     return Scaffold(
       appBar: AppBar(
-        // TRY THIS: Try changing the color here to a specific color (to
-        // Colors.amber, perhaps?) and trigger a hot reload to see the AppBar
-        // change color while the other colors stay the same.
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        // Here we take the value from the MyHomePage object that was created by
-        // the App.build method, and use it to set our appbar title.
         title: Text(widget.title),
       ),
-      body: Center(
-        // Center is a layout widget. It takes a single child and positions it
-        // in the middle of the parent.
-        child: Column(
-          // Column is also a layout widget. It takes a list of children and
-          // arranges them vertically. By default, it sizes itself to fit its
-          // children horizontally, and tries to be as tall as its parent.
-          //
-          // Column has various properties to control how it sizes itself and
-          // how it positions its children. Here we use mainAxisAlignment to
-          // center the children vertically; the main axis here is the vertical
-          // axis because Columns are vertical (the cross axis would be
-          // horizontal).
-          //
-          // TRY THIS: Invoke "debug painting" (choose the "Toggle Debug Paint"
-          // action in the IDE, or press "p" in the console), to see the
-          // wireframe for each widget.
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headlineMedium,
-            ),
-          ],
-        ),
-      ),
+      body: _screens[_currentIndex],
       floatingActionButton: FloatingActionButton(
         onPressed: _incrementCounter,
         tooltip: 'Increment',
         child: const Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
+      ),
+      bottomNavigationBar: MyBNB(),
+      drawer: myDrawer(),
+    );
+  }
+
+  BottomNavigationBar MyBNB() {
+    return BottomNavigationBar(
+        currentIndex: _currentIndex,
+        onTap: (int index) {
+          setState(() {
+            _currentIndex = index;
+          });
+        },
+        fixedColor: const Color.fromARGB(255, 0, 125, 150),
+        items: [
+          BottomNavigationBarItem(
+            label: "Home",
+            icon: Icon(Icons.home),
+          ),
+          BottomNavigationBarItem(
+            label: "Game",
+            icon: Icon(Icons.gamepad),
+          ),
+          BottomNavigationBarItem(
+            label: "High Score",
+            icon: Icon(Icons.score),
+          ),
+        ]);
+  }
+
+  Drawer myDrawer() {
+    return Drawer(
+      elevation: 16.0,
+      child: Column(
+        children: <Widget>[
+          UserAccountsDrawerHeader(
+              accountName: Text("Jennie"),
+              accountEmail: Text(active_user),
+              currentAccountPicture: CircleAvatar(
+                  backgroundImage: NetworkImage("https://i.pravatar.cc/150"))),
+          ListTile(
+              title: new Text("Home"),
+              leading: new Icon(Icons.home),
+              onTap: () {
+                Navigator.popAndPushNamed(context, 'home');
+              }),
+          ListTile(
+              title: new Text("Game"),
+              leading: new Icon(Icons.gamepad),
+              onTap: () {
+                Navigator.popAndPushNamed(context, 'game');
+              }),
+          ListTile(
+              title: new Text("High Score"),
+              leading: new Icon(Icons.score),
+              onTap: () {
+                Navigator.popAndPushNamed(context, 'high_score');
+              }),
+          ListTile(
+              title: new Text(active_user != "" ? "Logout" : "Login"),
+              leading: new Icon(Icons.login),
+              onTap: () {
+                active_user != ""
+                    ? doLogout()
+                    : Navigator.popAndPushNamed(context, 'login');
+              })
+        ],
+      ),
     );
   }
 }
