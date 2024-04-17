@@ -96,11 +96,6 @@ class _MyHomePageState extends State<MyHomePage> {
         title: Text(_title[_currentIndex]),
       ),
       body: _screens[_currentIndex],
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ),
       // bottomNavigationBar: MyBNB(),
       drawer: myDrawer(),
     );
