@@ -137,6 +137,86 @@ class _GameState extends State<Game> {
         "assets/images/c-10-3.png",
         "assets/images/c-10-4.png",
         randomImage10));
+    int randomIndex11 = Random().nextInt(4);
+    String randomImage11 = "assets/images/c-11-${randomIndex11 + 1}.png";
+    _questions.add(QuestionObj(
+        "assets/images/c-11-1.png",
+        "assets/images/c-11-2.png",
+        "assets/images/c-11-3.png",
+        "assets/images/c-11-4.png",
+        randomImage11));
+    int randomIndex12 = Random().nextInt(4);
+    String randomImage12 = "assets/images/c-12-${randomIndex12 + 1}.png";
+    _questions.add(QuestionObj(
+        "assets/images/c-12-1.png",
+        "assets/images/c-12-2.png",
+        "assets/images/c-12-3.png",
+        "assets/images/c-12-4.png",
+        randomImage12));
+    int randomIndex13 = Random().nextInt(4);
+    String randomImage13 = "assets/images/c-13-${randomIndex13 + 1}.png";
+    _questions.add(QuestionObj(
+        "assets/images/c-13-1.png",
+        "assets/images/c-13-2.png",
+        "assets/images/c-13-3.png",
+        "assets/images/c-13-4.png",
+        randomImage13));
+    int randomIndex14 = Random().nextInt(4);
+    String randomImage14 = "assets/images/c-14-${randomIndex14 + 1}.png";
+    _questions.add(QuestionObj(
+        "assets/images/c-14-1.png",
+        "assets/images/c-14-2.png",
+        "assets/images/c-14-3.png",
+        "assets/images/c-14-4.png",
+        randomImage14));
+    int randomIndex15 = Random().nextInt(4);
+    String randomImage15 = "assets/images/c-15-${randomIndex15 + 1}.png";
+    _questions.add(QuestionObj(
+        "assets/images/c-15-1.png",
+        "assets/images/c-15-2.png",
+        "assets/images/c-15-3.png",
+        "assets/images/c-15-4.png",
+        randomImage15));
+    int randomIndex16 = Random().nextInt(4);
+    String randomImage16 = "assets/images/c-16-${randomIndex16 + 1}.png";
+    _questions.add(QuestionObj(
+        "assets/images/c-16-1.png",
+        "assets/images/c-16-2.png",
+        "assets/images/c-16-3.png",
+        "assets/images/c-16-4.png",
+        randomImage16));
+    int randomIndex17 = Random().nextInt(4);
+    String randomImage17 = "assets/images/c-17-${randomIndex17 + 1}.png";
+    _questions.add(QuestionObj(
+        "assets/images/c-17-1.png",
+        "assets/images/c-17-2.png",
+        "assets/images/c-17-3.png",
+        "assets/images/c-17-4.png",
+        randomImage17));
+    int randomIndex18 = Random().nextInt(4);
+    String randomImage18 = "assets/images/c-10-${randomIndex18 + 1}.png";
+    _questions.add(QuestionObj(
+        "assets/images/c-18-1.png",
+        "assets/images/c-18-2.png",
+        "assets/images/c-18-3.png",
+        "assets/images/c-18-4.png",
+        randomImage18));
+    int randomIndex19 = Random().nextInt(4);
+    String randomImage19 = "assets/images/c-19-${randomIndex19 + 1}.png";
+    _questions.add(QuestionObj(
+        "assets/images/c-19-1.png",
+        "assets/images/c-19-2.png",
+        "assets/images/c-19-3.png",
+        "assets/images/c-19-4.png",
+        randomImage19));
+    int randomIndex20 = Random().nextInt(4);
+    String randomImage20 = "assets/images/c-20-${randomIndex20 + 1}.png";
+    _questions.add(QuestionObj(
+        "assets/images/c-20-1.png",
+        "assets/images/c-20-2.png",
+        "assets/images/c-20-3.png",
+        "assets/images/c-20-4.png",
+        randomImage20));
  
     Set<int> uniqueNumbers = Set<int>();
     Random random = Random();
