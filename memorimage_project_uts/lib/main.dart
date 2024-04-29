@@ -8,7 +8,6 @@ import 'package:memorimage_project_uts/screen/high_score.dart';
 String active_user = "";
 
 void doLogout() async {
-  //later, we use web service here to check the user id and password
   final prefs = await SharedPreferences.getInstance();
   active_user = "";
   prefs.remove("user_id");
@@ -20,6 +19,12 @@ Future<String> checkUser() async {
   String user_id = prefs.getString("user_id") ?? '';
   return user_id;
 }
+
+// Future<List<String>> checkTopScore() async {
+//   final prefs = await SharedPreferences.getInstance();
+//   String user_id = prefs.getString("user_id") ?? '';
+//   return user_id;
+// }
 
 void main() {
   runApp(const MyApp());
