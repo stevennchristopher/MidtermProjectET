@@ -136,18 +136,6 @@ class _MyHomePageState extends State<MyHomePage> {
               accountEmail: Text(active_user + "@gmail.com"),
               currentAccountPicture: CircleAvatar(
                   backgroundImage: NetworkImage("https://i.pravatar.cc/150"))),
-          // ListTile(
-          //     title: new Text("Home"),
-          //     leading: new Icon(Icons.home),
-          //     onTap: () {
-          //       Navigator.popAndPushNamed(context, 'home');
-          //     }),
-          // ListTile(
-          //     title: new Text("Game"),
-          //     leading: new Icon(Icons.gamepad),
-          //     onTap: () {
-          //       Navigator.popAndPushNamed(context, 'game');
-          //     }),
           ListTile(
               title: new Text("High Score"),
               leading: new Icon(Icons.score),

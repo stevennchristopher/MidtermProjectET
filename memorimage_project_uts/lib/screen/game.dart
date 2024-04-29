@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'dart:math';
 import 'package:memorimage_project_uts/class/question.dart';
+import 'package:memorimage_project_uts/screen/hasil.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 import 'dart:async';
 
@@ -217,7 +218,7 @@ class _GameState extends State<Game> {
         "assets/images/c-20-3.png",
         "assets/images/c-20-4.png",
         randomImage20));
- 
+
     Set<int> uniqueNumbers = Set<int>();
     Random random = Random();
 
@@ -300,24 +301,10 @@ class _GameState extends State<Game> {
   finishQuiz() {
     _timerGame.cancel();
     _question_no = 0;
-    showDialog<String>(
-        context: context,
-        builder: (BuildContext context) => AlertDialog(
-              title: Text('Quiz'),
-              content: Text('Your point = $_point'),
-              actions: <Widget>[
-                TextButton(
-                  onPressed: () {
-                    Navigator.pop(context, 'OK');
-                    Navigator.pop(context);
-                  },
-                  child: const Text('OK'),
-                ),
-              ],
-            ));
-
-    // _top_score = _point;
-    // getScore();
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => Hasil(_point)),
+    );
   }
 
   void checkAnswer(String answer) {
@@ -396,13 +383,12 @@ class _GameState extends State<Game> {
             Visibility(
               visible: _percentCreated,
               child: LinearPercentIndicator(
-                center: Text(formatTime(_endGameTime)),
-                width: MediaQuery.of(context).size.width,
-                lineHeight: 20.0,
-                percent: 1 - (_endGameTime / _gameTime),
-                backgroundColor: Colors.green,
-                progressColor: Colors.red
-              ),
+                  center: Text(formatTime(_endGameTime)),
+                  width: MediaQuery.of(context).size.width,
+                  lineHeight: 20.0,
+                  percent: 1 - (_endGameTime / _gameTime),
+                  backgroundColor: Colors.green,
+                  progressColor: Colors.red),
             ),
             Visibility(visible: _gapCreated, child: SizedBox(height: 30)),
             Visibility(
