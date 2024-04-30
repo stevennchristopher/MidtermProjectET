@@ -26,7 +26,6 @@ class _LoginState extends State<Login> {
   String _user_id = "";
 
   void doLogin() async { //harus ditaruk diatas
-    //later, we use web service here to check the user id and password
     final prefs = await SharedPreferences.getInstance();
     prefs.setString("user_id", _user_id);
     main();

@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:memorimage_project_uts/main.dart';
-import 'package:memorimage_project_uts/screen/game.dart';
-import 'package:memorimage_project_uts/screen/high_score.dart';
-import 'package:memorimage_project_uts/screen/home.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class Hasil extends StatelessWidget {
@@ -24,24 +21,46 @@ class Hasil extends StatelessWidget {
       return "Esperto dell'Indovinello";
     } else if (point == 5) {
       return "Maestro dell'Indovinello";
+    } else {
+      return "";
     }
-    return "";
   }
 
-//   Future<List<String>> checkTopScore() async {
-//   final prefs = await SharedPreferences.getInstance();
-//   String user_id = prefs.getString("user_id") ?? '';
-//   return user_id;
-// }
+  void setScore(int point) async {
+    final prefs = await SharedPreferences.getInstance();
+    if (point > scoreLBList[0]) {
+      if (active_user == userLBList[0]) {
+        prefs.setInt("topScore1", point);
+      } else {
+        prefs.setString("topUsername2", userLBList[0]);
+        prefs.setInt("topScore2", scoreLBList[0]);
 
-Future<void> saveTopScores(Map<String, int> topScores) async {
-  final prefs = await SharedPreferences.getInstance();
-  String data = topScores.entries.map((entry) => "${entry.key}:${entry.value}").join(';');
-  prefs.setString("top_scores", data);
-}
+        prefs.setString("topUsername3", userLBList[1]);
+        prefs.setInt("topScore3", scoreLBList[1]);
+
+        prefs.setString("topUsername1", active_user);
+        prefs.setInt("topScore1", point);
+      }
+    } else if (point > scoreLBList[1]) {
+      if (active_user == userLBList[1]) {
+        prefs.setInt("topScore2", point);
+      } else {
+        prefs.setString("topUsername3", userLBList[1]);
+        prefs.setInt("topScore3", scoreLBList[1]);
+
+        prefs.setString("topUsername2", active_user);
+        prefs.setInt("topScore2", point);
+      }
+    } else if (point > scoreLBList[2]) {
+      prefs.setString("topUsername3", active_user);
+      prefs.setInt("topScore3", point);
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
+    setScore(_point);
+
     return Scaffold(
       appBar: AppBar(
         title: Text('Hasil'),
@@ -62,41 +81,43 @@ Future<void> saveTopScores(Map<String, int> topScores) async {
             Text(
               "$_point dari 5 tebakan berhasil dijawab",
               style: TextStyle(
-                fontSize: 24,
+                fontSize: 14,
                 fontWeight: FontWeight.bold,
               ),
             ),
             Text(
               "Gelar yang didapat: $_gelar",
               style: TextStyle(
-                fontSize: 24,
+                fontSize: 14,
                 fontWeight: FontWeight.bold,
               ),
             ),
             Divider(height: 10, color: Colors.transparent),
             ElevatedButton(
               onPressed: () {
-                Navigator.pop(
-                  context,
-                  MaterialPageRoute(builder: (context) => (Game())),
-                );
+                Navigator.popAndPushNamed(context, 'game');
               },
               child: Text('Play Again'),
             ),
             Divider(height: 10, color: Colors.transparent),
             ElevatedButton(
               onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => (HighScore())),
-                );
+                getUsername().then((List result) {
+                  userLBList = result;
+                });
+
+                getScore().then((List result) {
+                  scoreLBList = result;
+                });
+
+                Navigator.popAndPushNamed(context, 'high_score');
               },
               child: Text('High Score'),
             ),
             Divider(height: 10, color: Colors.transparent),
             ElevatedButton(
               onPressed: () {
-                Navigator.pop(
+                Navigator.push(
                   context,
                   MaterialPageRoute(builder: (context) => (MyApp())),
                 );

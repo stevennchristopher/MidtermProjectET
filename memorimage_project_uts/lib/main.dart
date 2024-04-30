@@ -7,6 +7,9 @@ import 'package:memorimage_project_uts/screen/high_score.dart';
 
 String active_user = "";
 
+List userLBList = [];
+List scoreLBList = [];
+
 void doLogout() async {
   final prefs = await SharedPreferences.getInstance();
   active_user = "";
@@ -20,11 +23,37 @@ Future<String> checkUser() async {
   return user_id;
 }
 
-// Future<List<String>> checkTopScore() async {
+// void createLB() async {
 //   final prefs = await SharedPreferences.getInstance();
-//   String user_id = prefs.getString("user_id") ?? '';
-//   return user_id;
+//   prefs.setString("topUsername1", "");
+//   prefs.setInt("topScore1", 0);
+
+//   prefs.setString("topUsername2", "");
+//   prefs.setInt("topScore2", 0);
+
+//   prefs.setString("topUsername3", "");
+//   prefs.setInt("topScore3", 0);
+
+//   // main();
 // }
+
+Future<List> getUsername() async {
+  final prefs = await SharedPreferences.getInstance();
+  String user1 = prefs.getString("topUsername1") ?? '';
+  String user2 = prefs.getString("topUsername2") ?? '';
+  String user3 = prefs.getString("topUsername3") ?? '';
+  List<String> userLeadboard = [user1, user2, user3];
+  return userLeadboard;
+}
+
+Future<List> getScore() async {
+  final prefs = await SharedPreferences.getInstance();
+  int score1 = prefs.getInt("topScore1") ?? 0;
+  int score2 = prefs.getInt("topScore2") ?? 0;
+  int score3 = prefs.getInt("topScore3") ?? 0;
+  List<int> scoreLeadboard = [score1, score2, score3];
+  return scoreLeadboard;
+}
 
 void main() {
   runApp(const MyApp());
@@ -41,7 +70,6 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -63,15 +91,6 @@ class MyApp extends StatelessWidget {
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key, required this.title});
 
-  // This widget is the home page of your application. It is stateful, meaning
-  // that it has a State object (defined below) that contains fields that affect
-  // how it looks.
-
-  // This class is the configuration for the state. It holds the values (in this
-  // case the title) provided by the parent (in this case the App widget) and
-  // used by the build method of the State. Fields in a Widget subclass are
-  // always marked "final".
-
   final String title;
 
   @override
@@ -84,13 +103,7 @@ class _MyHomePageState extends State<MyHomePage> {
   final List<String> _title = ['Home'];
 
   void _incrementCounter() {
-    setState(() {
-      // This call to setState tells the Flutter framework that something has
-      // changed in this State, which causes it to rerun the build method below
-      // so that the display can reflect the updated values. If we changed
-      // _counter without calling setState(), then the build method would not be
-      // called again, and so nothing would appear to happen.
-    });
+    setState(() {});
   }
 
   @override
@@ -101,35 +114,9 @@ class _MyHomePageState extends State<MyHomePage> {
         title: Text(_title[_currentIndex]),
       ),
       body: _screens[_currentIndex],
-      // bottomNavigationBar: MyBNB(),
       drawer: myDrawer(),
     );
   }
-
-  // BottomNavigationBar MyBNB() {
-  //   return BottomNavigationBar(
-  //       currentIndex: _currentIndex,
-  //       onTap: (int index) {
-  //         setState(() {
-  //           _currentIndex = index;
-  //         });
-  //       },
-  //       fixedColor: const Color.fromARGB(255, 0, 125, 150),
-  //       items: [
-  //         BottomNavigationBarItem(
-  //           label: "Home",
-  //           icon: Icon(Icons.home),
-  //         ),
-  //         BottomNavigationBarItem(
-  //           label: "Game",
-  //           icon: Icon(Icons.gamepad),
-  //         ),
-  //         BottomNavigationBarItem(
-  //           label: "High Score",
-  //           icon: Icon(Icons.score),
-  //         ),
-  //       ]);
-  // }
 
   Drawer myDrawer() {
     return Drawer(
@@ -145,6 +132,14 @@ class _MyHomePageState extends State<MyHomePage> {
               title: new Text("High Score"),
               leading: new Icon(Icons.score),
               onTap: () {
+                getUsername().then((List result) {
+                  userLBList = result;
+                });
+
+                getScore().then((List result) {
+                  scoreLBList = result;
+                });
+
                 Navigator.popAndPushNamed(context, 'high_score');
               }),
           ListTile(

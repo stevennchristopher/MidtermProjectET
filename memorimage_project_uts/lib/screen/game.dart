@@ -56,7 +56,7 @@ class _GameState extends State<Game> {
       _changeOpacityCardRemember();
     });
 
-    int randomIndex1 = Random().nextInt(4);
+    int randomIndex1 = Random().nextInt(3);
     String randomImage1 = "assets/images/c-1-${randomIndex1 + 1}.png";
     _questions.add(QuestionObj(
       "assets/images/c-1-1.png",
@@ -65,7 +65,7 @@ class _GameState extends State<Game> {
       "assets/images/c-1-4.png",
       randomImage1,
     ));
-    int randomIndex2 = Random().nextInt(4);
+    int randomIndex2 = Random().nextInt(3);
     String randomImage2 = "assets/images/c-2-${randomIndex2 + 1}.png";
     _questions.add(QuestionObj(
       "assets/images/c-2-1.png",
@@ -74,7 +74,7 @@ class _GameState extends State<Game> {
       "assets/images/c-2-4.png",
       randomImage2,
     ));
-    int randomIndex3 = Random().nextInt(4);
+    int randomIndex3 = Random().nextInt(3);
     String randomImage3 = "assets/images/c-3-${randomIndex3 + 1}.png";
     _questions.add(QuestionObj(
         "assets/images/c-3-1.png",
@@ -82,7 +82,7 @@ class _GameState extends State<Game> {
         "assets/images/c-3-3.png",
         "assets/images/c-3-4.png",
         randomImage3));
-    int randomIndex4 = Random().nextInt(4);
+    int randomIndex4 = Random().nextInt(3);
     String randomImage4 = "assets/images/c-4-${randomIndex4 + 1}.png";
     _questions.add(QuestionObj(
         "assets/images/c-4-1.png",
@@ -90,7 +90,7 @@ class _GameState extends State<Game> {
         "assets/images/c-4-3.png",
         "assets/images/c-4-4.png",
         randomImage4));
-    int randomIndex5 = Random().nextInt(4);
+    int randomIndex5 = Random().nextInt(3);
     String randomImage5 = "assets/images/c-5-${randomIndex5 + 1}.png";
     _questions.add(QuestionObj(
         "assets/images/c-5-1.png",
@@ -98,7 +98,7 @@ class _GameState extends State<Game> {
         "assets/images/c-5-3.png",
         "assets/images/c-5-4.png",
         randomImage5));
-    int randomIndex6 = Random().nextInt(4);
+    int randomIndex6 = Random().nextInt(3);
     String randomImage6 = "assets/images/c-6-${randomIndex6 + 1}.png";
     _questions.add(QuestionObj(
         "assets/images/c-6-1.png",
@@ -106,7 +106,7 @@ class _GameState extends State<Game> {
         "assets/images/c-6-3.png",
         "assets/images/c-6-4.png",
         randomImage6));
-    int randomIndex7 = Random().nextInt(4);
+    int randomIndex7 = Random().nextInt(3);
     String randomImage7 = "assets/images/c-7-${randomIndex7 + 1}.png";
     _questions.add(QuestionObj(
         "assets/images/c-7-1.png",
@@ -114,7 +114,7 @@ class _GameState extends State<Game> {
         "assets/images/c-7-3.png",
         "assets/images/c-7-4.png",
         randomImage7));
-    int randomIndex8 = Random().nextInt(4);
+    int randomIndex8 = Random().nextInt(3);
     String randomImage8 = "assets/images/c-8-${randomIndex8 + 1}.png";
     _questions.add(QuestionObj(
         "assets/images/c-8-1.png",
@@ -122,7 +122,7 @@ class _GameState extends State<Game> {
         "assets/images/c-8-3.png",
         "assets/images/c-8-4.png",
         randomImage8));
-    int randomIndex9 = Random().nextInt(4);
+    int randomIndex9 = Random().nextInt(3);
     String randomImage9 = "assets/images/c-9-${randomIndex9 + 1}.png";
     _questions.add(QuestionObj(
         "assets/images/c-9-1.png",
@@ -130,7 +130,7 @@ class _GameState extends State<Game> {
         "assets/images/c-9-3.png",
         "assets/images/c-9-4.png",
         randomImage9));
-    int randomIndex10 = Random().nextInt(4);
+    int randomIndex10 = Random().nextInt(3);
     String randomImage10 = "assets/images/c-10-${randomIndex10 + 1}.png";
     _questions.add(QuestionObj(
         "assets/images/c-10-1.png",
@@ -138,7 +138,7 @@ class _GameState extends State<Game> {
         "assets/images/c-10-3.png",
         "assets/images/c-10-4.png",
         randomImage10));
-    int randomIndex11 = Random().nextInt(4);
+    int randomIndex11 = Random().nextInt(3);
     String randomImage11 = "assets/images/c-11-${randomIndex11 + 1}.png";
     _questions.add(QuestionObj(
         "assets/images/c-11-1.png",
@@ -146,7 +146,7 @@ class _GameState extends State<Game> {
         "assets/images/c-11-3.png",
         "assets/images/c-11-4.png",
         randomImage11));
-    int randomIndex12 = Random().nextInt(4);
+    int randomIndex12 = Random().nextInt(3);
     String randomImage12 = "assets/images/c-12-${randomIndex12 + 1}.png";
     _questions.add(QuestionObj(
         "assets/images/c-12-1.png",
@@ -154,7 +154,7 @@ class _GameState extends State<Game> {
         "assets/images/c-12-3.png",
         "assets/images/c-12-4.png",
         randomImage12));
-    int randomIndex13 = Random().nextInt(4);
+    int randomIndex13 = Random().nextInt(3);
     String randomImage13 = "assets/images/c-13-${randomIndex13 + 1}.png";
     _questions.add(QuestionObj(
         "assets/images/c-13-1.png",
@@ -162,7 +162,7 @@ class _GameState extends State<Game> {
         "assets/images/c-13-3.png",
         "assets/images/c-13-4.png",
         randomImage13));
-    int randomIndex14 = Random().nextInt(4);
+    int randomIndex14 = Random().nextInt(3);
     String randomImage14 = "assets/images/c-14-${randomIndex14 + 1}.png";
     _questions.add(QuestionObj(
         "assets/images/c-14-1.png",
@@ -170,7 +170,7 @@ class _GameState extends State<Game> {
         "assets/images/c-14-3.png",
         "assets/images/c-14-4.png",
         randomImage14));
-    int randomIndex15 = Random().nextInt(4);
+    int randomIndex15 = Random().nextInt(3);
     String randomImage15 = "assets/images/c-15-${randomIndex15 + 1}.png";
     _questions.add(QuestionObj(
         "assets/images/c-15-1.png",
@@ -178,7 +178,7 @@ class _GameState extends State<Game> {
         "assets/images/c-15-3.png",
         "assets/images/c-15-4.png",
         randomImage15));
-    int randomIndex16 = Random().nextInt(4);
+    int randomIndex16 = Random().nextInt(3);
     String randomImage16 = "assets/images/c-16-${randomIndex16 + 1}.png";
     _questions.add(QuestionObj(
         "assets/images/c-16-1.png",
@@ -186,7 +186,7 @@ class _GameState extends State<Game> {
         "assets/images/c-16-3.png",
         "assets/images/c-16-4.png",
         randomImage16));
-    int randomIndex17 = Random().nextInt(4);
+    int randomIndex17 = Random().nextInt(3);
     String randomImage17 = "assets/images/c-17-${randomIndex17 + 1}.png";
     _questions.add(QuestionObj(
         "assets/images/c-17-1.png",
@@ -194,7 +194,7 @@ class _GameState extends State<Game> {
         "assets/images/c-17-3.png",
         "assets/images/c-17-4.png",
         randomImage17));
-    int randomIndex18 = Random().nextInt(4);
+    int randomIndex18 = Random().nextInt(3);
     String randomImage18 = "assets/images/c-10-${randomIndex18 + 1}.png";
     _questions.add(QuestionObj(
         "assets/images/c-18-1.png",
@@ -202,7 +202,7 @@ class _GameState extends State<Game> {
         "assets/images/c-18-3.png",
         "assets/images/c-18-4.png",
         randomImage18));
-    int randomIndex19 = Random().nextInt(4);
+    int randomIndex19 = Random().nextInt(3);
     String randomImage19 = "assets/images/c-19-${randomIndex19 + 1}.png";
     _questions.add(QuestionObj(
         "assets/images/c-19-1.png",
@@ -210,7 +210,7 @@ class _GameState extends State<Game> {
         "assets/images/c-19-3.png",
         "assets/images/c-19-4.png",
         randomImage19));
-    int randomIndex20 = Random().nextInt(4);
+    int randomIndex20 = Random().nextInt(3);
     String randomImage20 = "assets/images/c-20-${randomIndex20 + 1}.png";
     _questions.add(QuestionObj(
         "assets/images/c-20-1.png",
@@ -223,14 +223,14 @@ class _GameState extends State<Game> {
     Random random = Random();
 
     while (uniqueNumbers.length < 5) {
-      uniqueNumbers.add(random.nextInt(20));
+      uniqueNumbers.add(random.nextInt(19));
     }
 
     List<int> randomNumbers = uniqueNumbers.toList();
 
     for (int num in randomNumbers) {
       _selected_questions.add(_questions[num]);
-      print(num);
+      print(num+1);
     }
   }
 
