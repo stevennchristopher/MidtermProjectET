@@ -23,20 +23,6 @@ Future<String> checkUser() async {
   return user_id;
 }
 
-// void createLB() async {
-//   final prefs = await SharedPreferences.getInstance();
-//   prefs.setString("topUsername1", "");
-//   prefs.setInt("topScore1", 0);
-
-//   prefs.setString("topUsername2", "");
-//   prefs.setInt("topScore2", 0);
-
-//   prefs.setString("topUsername3", "");
-//   prefs.setInt("topScore3", 0);
-
-//   // main();
-// }
-
 Future<List> getUsername() async {
   final prefs = await SharedPreferences.getInstance();
   String user1 = prefs.getString("topUsername1") ?? '';
